@@ -47,10 +47,36 @@ void printArray(int a[SIZE][SIZE], int m, int n)
 	}
 }
 
+void sortInc(int arr[SIZE][SIZE], int n) {
+	for (int i = 0; i < n - 1; i++) {
+		for (int j = i + 1; j < n; j++) {
+			if (arr[i][i] > arr[j][j]) {
+				int temp = arr[i][i];
+				arr[i][i] = arr[j][j];
+				arr[j][j] = temp;
+			}
+		}
+	}
+}
+
+void sortDec(int arr[SIZE][SIZE], int n) {
+	for (int i = n - 1; i > 0; i--) {
+		for (int j = i - 1; j >= 0; j--) {
+			if (arr[i][n - i - 1] < arr[j][n - j - 1]) {
+				int temp = arr[i][n - i - 1];
+				arr[i][n - i - 1] = arr[j][n - j - 1];
+				arr[j][n - j - 1] = temp;
+			}
+		}
+	}
+}
+
 void Ex3(int in_arr[], int n){
 	int a[SIZE][SIZE];
 	Array2Dconverter(in_arr,a,n,n);
 	//Your codes here
+	sortInc(a, n);
+	sortDec(a, n);
 	
 	printArray(a,n,n);
 }
